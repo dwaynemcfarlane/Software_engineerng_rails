@@ -1,0 +1,5 @@
+<h1>List of all programs students can apply to</h1>
+
+<%@schools.each do |school|%>
+<h4><a href="/schools/<%=school.id %>"><%=school.program_name%>,  <%=school.school_name%></a></h4>
+<%end%>

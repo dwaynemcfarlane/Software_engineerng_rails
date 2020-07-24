@@ -1,0 +1,16 @@
+<h2>Select the Program you wish to Apply to</h2>
+
+
+
+
+<form action="/uniapps" method="post">
+<select name="uniapps[program_name]">
+<%@programs.each do |program|%>
+ 
+  <option name="application[program_name]"value="<%=program.program_name%>"><%=program.program_name%>  <%=program.school_name%></option>
+  <%end%>
+
+</select>
+<input type="submit" name="" value="Submit Application">
+
+

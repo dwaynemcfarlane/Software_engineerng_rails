@@ -1,0 +1,37 @@
+<h1>Welcome to My Student Account Dashboard</h1>
+
+<h3>My Account information</h3>
+<h3>Student:</h3><%= @student.first_name %></br>
+<h3>Student Username:</h3><%= @student.username %></br>
+<h3>Student email:</h3><%= @student.email %></br>
+<h3>Student age:</h3><%= @student.age %></br>
+<h3>Student SAT Score:</h3><%= @student.sat_score %></br>
+
+<a href="/students/<%=@student.id%>/edit">Edit Student Information</a>
+
+</br>
+<a href="/uniapps/new">Apply to new program</a>
+</br>
+</br>
+</br>
+<h2><%= @student.first_name%> has applied to the following programs</h2>
+   
+<% @student.schools.each do |program|%>
+<li><b>Program Name:</b> <%=program.program_name%>, <b>School Name:</b> <%=program.school_name%></li>
+<%end%>
+
+
+
+
+</br>
+</br>
+</br>
+<a href="/logout">Log Out</a>
+</br>
+</br>
+</br>
+<hr>
+<form action="/students/<%= @student.id %>" method="post">
+<input type="hidden" name="_method" value="delete">
+<input type="submit" name="" value="Delete My Account">
+</form>

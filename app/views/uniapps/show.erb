@@ -1,0 +1,7 @@
+<h1>Application details Application number <%= @application.id %></h1>
+
+Student Name: <%= @application.student.first_name %><%= @application.student.last_name %></br>
+Program Name: <%= @application.school.program_name %></br>
+Sat Score: <%= @application.student.sat_score %></br>
+
+Date Application Submitted: <%= @application.created_at %></br>

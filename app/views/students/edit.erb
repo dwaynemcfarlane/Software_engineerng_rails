@@ -1,0 +1,11 @@
+<h1>Edit <%=@student.first_name%>'s information</h1>
+<h5>Please note that you will only be allowed to update your age and SAT score to update other parts of your application, please contact support. </h5>
+
+<form action="/students/<%= @student.id %>" method="post">
+<input type="hidden" name="_method" value="patch">
+
+Update Age:<input type="integer" name="students[age]" value="<%= @student.age %>">
+Update SAT Score:<input type="integer" name="students[sat_score]" value="<%=  @student.sat_score%>">
+<input type="submit" name="" value="Submit Edit">
+
+
