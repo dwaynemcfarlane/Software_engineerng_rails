@@ -1,5 +1,6 @@
 <h1>All Current Applications</h1>
 
 <%@applications.each do |application| %>
+
 <h5><a href="/uniapps/<%=application.id%>"><%=application.student.first_name %> <%=application.student.last_name %>,<%=application.school.school_name %>, <%=application.school.program_name %></a></h5>
 <%end %>

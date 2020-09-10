@@ -4,4 +4,13 @@ Student Name: <%= @application.student.first_name %><%= @application.student.las
 Program Name: <%= @application.school.program_name %></br>
 Sat Score: <%= @application.student.sat_score %></br>
 
+
+
 Date Application Submitted: <%= @application.created_at %></br>
+<a href='/uniapps/<%=@application.id%>/edit'> edit this application</a>  
+<hr>
+
+<form action="/uniapps/<%= @application.id %>" method="post">
+<input type="hidden" name="_method" value="delete">
+<input type="submit" name="" value="Delete this application">
+</form>

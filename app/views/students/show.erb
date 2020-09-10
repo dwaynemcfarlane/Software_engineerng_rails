@@ -15,9 +15,9 @@
 </br>
 </br>
 <h2><%= @student.first_name%> has applied to the following programs</h2>
-   
-<% @student.schools.each do |program|%>
-<li><b>Program Name:</b> <%=program.program_name%>, <b>School Name:</b> <%=program.school_name%></li>
+
+<% @student.uniapps.each do |program|%>
+<li><b>Program Name:</b> <%=program.school.program_name%>, <b>School Name:</b> <%=program.school.school_name%><a href='/uniapps/<%=program.id%>'> View Application</a></li>
 <%end%>
 
 

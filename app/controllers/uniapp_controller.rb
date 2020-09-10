@@ -7,15 +7,15 @@ class UniappsController < ApplicationController
         @programs = School.all
       
         erb :'uniapps/new'
-      
       end
       post '/uniapps' do
         #get entire program object
-        @program = School.find_by(program_name: params[:uniapps][:program_name])
+
+        @school = School.find_by(program_name: params[:uniapps][:program_name])
         # session[:user_id] = @student.id
       
         #create new application linking program with current user
-        @application = Uniapp.create(student_id: current_user.id, school_id: @program.id)
+        @application = Uniapp.create(student_id: current_user.id, school_id: @school.id)
         
         
         redirect "/students/#{current_user.id}"
@@ -35,15 +35,20 @@ class UniappsController < ApplicationController
       get '/uniapps/:id/edit' do
         
           @application = Uniapp.find(params[:id])
-          erb :'students/show'
+          @school = School.all
+          erb :'uniapps/edit'
         end
         
         
         patch "/uniapps/:id" do
           
           @application = Uniapp.find(params[:id])
-          
+          @school = School.all
+       
+          # binding.pry
           @application.update(params[:application])
+          
+          
         
           redirect "/uniapps/#{@application.id}"
         end
@@ -56,8 +61,24 @@ class UniappsController < ApplicationController
         @application = Uniapp.find(params[:id]) #define instance variable for view
       
         erb :'uniapps/show' #show single application view
+
       
       end
+
+      #Delete uniapp
+      delete '/uniapps/:id' do
+     
+        
+        @uniapp = Uniapp.find(params[:id])
+        # binding.pry
+        if authorized_to_edit?(@uniapp) 
+         
+        @uniapp.destroy
+        redirect '/'
+        else
+        erb :noaccess
+        end
+      end 
       #helper
       helpers do
         def logged_in?
@@ -74,5 +95,9 @@ class UniappsController < ApplicationController
         else
         erb :welcome
         end
+      end
+
+      def authorized_to_edit?(uniapp)
+        @uniapp.student_id == current_user.id
       end
 end

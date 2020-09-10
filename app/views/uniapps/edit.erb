@@ -1,0 +1,19 @@
+<h2>Edit application # <%=@application.id%></h2>
+
+
+
+
+<form action="/uniapps/<%= @application.id %>" method="post">
+<input type="hidden" name="_method" value="patch">
+
+<select name="application[school_id]">
+
+<%@school.each do |program|%>
+
+  <option name="application[school_id]"value="<%=program.id%>"><%=program.program_name%>  <%=program.school_name%></option>
+  <%end%>
+
+</select>
+<input type="submit" name="" value="Update Application">
+
+

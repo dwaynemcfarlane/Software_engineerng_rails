@@ -30,7 +30,7 @@ class StudentsController < ApplicationController
       get '/students/:id' do
         @student = Student.find(params[:id])
         #finding the applications submitted by the current user.
-       
+        
         
         
         
